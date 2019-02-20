@@ -2,6 +2,8 @@ package main.java;
 
 import javax.persistence.*;
 
+import main.models.*;
+
 public class Test_Jpa {
 
 	public static void main(String[] args) {
@@ -19,5 +21,10 @@ public class Test_Jpa {
 		query.setParameter("reference", nomATrouver);
 		Livre livreTrouve = (Livre) query.getSingleResult();
 		System.out.println(livreTrouve.toString());
+		
+		Emprunt emprunt = em.find(Emprunt.class, 2);
+		/*for (Livre livreTemp : emprunt.getLivres()) {
+			System.out.println(livreTemp.toString());
+		}*/
 	}
 }

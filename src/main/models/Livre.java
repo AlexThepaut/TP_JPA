@@ -1,4 +1,6 @@
-package main.java;
+package main.models;
+
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,16 +15,13 @@ public class Livre {
 	
 	@Column(name = "AUTEUR", length = 50, nullable = false)
 	private String auteur;
+	
+	@ManyToMany(mappedBy = "livres")
+	private Set<Emprunt> emprunts;
 
 	public Livre(){
 		
 	}
-	
-	/*public Livre(int id, String titre, String auteur){
-		this.id = id;
-		this.titre = titre;
-		this.auteur = auteur;
-	}*/
 	
 	@Override
 	public String toString() {
@@ -53,5 +52,13 @@ public class Livre {
 
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
+	}
+
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	public void setEmprunts(Set<Emprunt> emprunts) {
+		this.emprunts = emprunts;
 	}
 }
