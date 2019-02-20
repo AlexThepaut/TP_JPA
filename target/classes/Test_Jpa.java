@@ -22,9 +22,18 @@ public class Test_Jpa {
 		Livre livreTrouve = (Livre) query.getSingleResult();
 		System.out.println(livreTrouve.toString());
 		
-		Emprunt emprunt = em.find(Emprunt.class, 2);
-		/*for (Livre livreTemp : emprunt.getLivres()) {
+		System.out.println("");
+		System.out.println("Livres : ");
+		Emprunt emprunt = em.find(Emprunt.class, 4);
+		for (Livre livreTemp : emprunt.getLivres()) {
 			System.out.println(livreTemp.toString());
-		}*/
+		}
+		
+		System.out.println("");
+		System.out.println("Commande : ");
+		Client client = em.find(Client.class,1);
+		for (Emprunt empruntTemp : client.getEmprunts()) {
+			System.out.println(empruntTemp.toString());
+		}
 	}
 }

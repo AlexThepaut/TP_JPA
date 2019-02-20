@@ -25,9 +25,9 @@ public class Emprunt {
 	private Client client;
 	
 	@ManyToMany
-	@JoinTable(name="emprunt_livre",
-		joinColumns = @JoinColumn(name="ID_EMPRUNT",referencedColumnName="ID"),
-		inverseJoinColumns = @JoinColumn(name="ID_LIVRE", referencedColumnName="ID"))
+	@JoinTable(name="compo",
+		joinColumns = @JoinColumn(name="ID_EMP",referencedColumnName="ID"),
+		inverseJoinColumns = @JoinColumn(name="ID_LIV", referencedColumnName="ID"))
 	private Set<Livre> livres;
 	
 	
@@ -55,10 +55,10 @@ public class Emprunt {
 	public void setDelai(int delai) {
 		this.delai = delai;
 	}
-	public Client getIdClient() {
+	public Client getClient() {
 		return client;
 	}
-	public void setIdClient(Client client) {
+	public void setClient(Client client) {
 		this.client = client;
 	}
 	public Set<Livre> getLivres() {
@@ -66,5 +66,15 @@ public class Emprunt {
 	}
 	public void setLivres(Set<Livre> livres) {
 		this.livres = livres;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "id : " + this.getId() 
+			/*+ ", date de debut : " + this.getDateDebut() 
+			+ ", date de fin : " + this.getDateFin() 
+			+ ", delai : " + this.getDelai() */
+			+ ", id client : " + this.getClient().getId();
 	}
 }
